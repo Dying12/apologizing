@@ -11,34 +11,38 @@
 <style>
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',Arial,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Arial,sans-serif;
 }
 
 html{
-scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
 
-background:linear-gradient(135deg,#dbeafe,#ffffff);
+    background:linear-gradient(135deg,#dbeafe,#ffffff);
 
-min-height:100vh;
+    min-height:100vh;
 
-overflow-x:hidden;
-overflow-y:auto;
+    overflow-x:hidden;
+    overflow-y:auto;
 
-display:flex;
-justify-content:center;
-align-items:center;
+    display:flex;
 
-padding:50px 20px;
+    justify-content:center;
 
-position:relative;
+    /* FIXED SCROLL ISSUE */
+    align-items:flex-start;
+
+    padding:50px 20px;
+
+    position:relative;
 
 }
+
 
 /* ============================= */
 /* Floating Background           */
@@ -46,227 +50,319 @@ position:relative;
 
 .float{
 
-position:absolute;
+    position:absolute;
 
-pointer-events:none;
+    pointer-events:none;
 
-user-select:none;
+    user-select:none;
 
-animation:float linear infinite;
+    animation:float linear infinite;
 
-opacity:.85;
+    opacity:.85;
 
 }
+
 
 @keyframes float{
 
-0%{
+    0%{
 
-transform:translateY(110vh) rotate(0deg);
+        transform:translateY(110vh) rotate(0deg);
 
-opacity:0;
+        opacity:0;
+
+    }
+
+
+    10%{
+
+        opacity:1;
+
+    }
+
+
+    100%{
+
+        transform:translateY(-120px) rotate(360deg);
+
+        opacity:0;
+
+    }
 
 }
 
-10%{
-
-opacity:1;
-
-}
-
-100%{
-
-transform:translateY(-120px) rotate(360deg);
-
-opacity:0;
-
-}
-
-}
 
 /* ============================= */
+/* Main Card                     */
+/* ============================= */
+
 
 .container{
 
-width:min(92%,720px);
+    width:min(92%,720px);
 
-margin:40px auto;
+    margin:40px auto;
 
-background:rgba(255,255,255,.62);
+    background:rgba(255,255,255,.62);
 
-backdrop-filter:blur(16px);
+    backdrop-filter:blur(16px);
 
-border-radius:30px;
+    border-radius:30px;
 
-padding:40px;
+    padding:40px;
 
-text-align:center;
+    text-align:center;
 
-box-shadow:
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.12);
 
-0 15px 40px rgba(0,0,0,.12);
 
-animation:pop .8s ease;
+    animation:pop .8s ease;
 
-z-index:5;
+    z-index:5;
 
 }
+
 
 @keyframes pop{
 
-from{
+    from{
 
-transform:translateY(30px) scale(.95);
+        transform:translateY(30px) scale(.95);
 
-opacity:0;
+        opacity:0;
+
+    }
+
+
+    to{
+
+        transform:translateY(0) scale(1);
+
+        opacity:1;
+
+    }
 
 }
 
-to{
 
-transform:translateY(0) scale(1);
-
-opacity:1;
-
-}
-
-}
 
 .fade{
 
-animation:fade .8s ease;
+    animation:fade .8s ease;
 
 }
+
+
 
 @keyframes fade{
 
-from{
+    from{
 
-opacity:0;
+        opacity:0;
 
-transform:translateY(20px);
+        transform:translateY(20px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
 
 }
 
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-opacity:1;
-
-}
-
-}
 
 /* ============================= */
+/* Text                          */
+/* ============================= */
+
 
 h1{
 
-font-size:clamp(2rem,7vw,3.8rem);
+    font-size:clamp(2rem,7vw,3.8rem);
 
-color:#1e3a8a;
+    color:#1e3a8a;
 
-margin-bottom:20px;
+    margin-bottom:20px;
 
 }
+
+
 
 h2{
 
-margin-top:30px;
+    margin-top:30px;
 
-font-size:1.8rem;
+    font-size:1.8rem;
 
-color:#1e3a8a;
+    color:#1e3a8a;
 
 }
+
+
 
 p{
 
-font-size:1.15rem;
+    font-size:1.15rem;
 
-line-height:1.9;
+    line-height:1.9;
 
-color:#555;
+    color:#555;
 
-margin-top:20px;
+    margin-top:20px;
 
-white-space:pre-line;
+    white-space:pre-line;
 
 }
+
+
+/* ============================= */
+/* Image                         */
+/* ============================= */
+
 
 img{
 
-width:280px;
+    width:280px;
 
-max-width:85vw;
+    max-width:85vw;
 
-border-radius:24px;
+    border-radius:24px;
 
-margin-top:25px;
+    margin-top:25px;
 
-box-shadow:
+    box-shadow:
 
-0 10px 25px rgba(0,0,0,.18);
+    0 10px 25px rgba(0,0,0,.18);
 
 }
 
+
+
 /* ============================= */
+/* Buttons                       */
+/* ============================= */
+
 
 button{
 
-border:none;
+    border:none;
 
-border-radius:16px;
+    border-radius:16px;
 
-cursor:pointer;
+    cursor:pointer;
 
-transition:.35s;
+    transition:.35s;
 
-padding:16px 35px;
+    padding:16px 35px;
 
-font-size:22px;
+    font-size:22px;
 
-margin:20px 10px;
+    margin:20px 10px;
 
 }
+
+
 
 #yesBtn{
 
-background:#2563eb;
+    background:#2563eb;
 
-color:white;
+    color:white;
 
 }
+
+
 
 #yesBtn:hover{
 
-background:#1d4ed8;
+    background:#1d4ed8;
 
-transform:scale(1.05);
+    transform:scale(1.05);
 
 }
+
+
 
 #noBtn{
 
-background:#dddddd;
+    background:#dddddd;
 
-color:#333;
+    color:#333;
 
-position:relative;
+    position:relative;
 
 }
 
+
 /* ============================= */
+/* Footer                        */
+/* ============================= */
+
 
 footer{
 
-margin-top:35px;
+    margin-top:35px;
 
-font-size:.95rem;
+    font-size:.95rem;
 
-color:#777;
+    color:#777;
+
+}
+
+
+
+/* ============================= */
+/* Mobile Fix                    */
+/* ============================= */
+
+
+@media(max-width:600px){
+
+
+    body{
+
+        padding:30px 15px;
+
+    }
+
+
+    .container{
+
+        padding:25px 20px;
+
+        margin:20px auto;
+
+    }
+
+
+    button{
+
+        width:90%;
+
+        font-size:20px;
+
+    }
+
+
+    h2{
+
+        font-size:1.4rem;
+
+    }
+
+
+    p{
+
+        font-size:1rem;
+
+    }
+
 
 }
 
@@ -274,9 +370,12 @@ color:#777;
 
 </head>
 
+
 <body>
 
+
 <div class="container" id="card">
+
 
 <h1 id="title">
 
@@ -284,15 +383,19 @@ Loading...
 
 </h1>
 
+
+
 <img
 
 id="gif"
 
-src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif"
+src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif"
 
 alt="Cute Cat"
 
 >
+
+
 
 <p id="text">
 
@@ -300,13 +403,10 @@ Preparing something...
 
 </p>
 
-<div
 
-id="buttons"
 
-style="display:none;"
+<div id="buttons" style="display:none;">
 
->
 
 <h2>
 
@@ -314,11 +414,13 @@ Want to hang out with me? ☕✨
 
 </h2>
 
+
 <button id="yesBtn">
 
 Sounds Fun 😄
 
 </button>
+
 
 <button id="noBtn">
 
@@ -326,7 +428,10 @@ Maybe Later 🙈
 
 </button>
 
+
 </div>
+
+
 
 <footer>
 
@@ -334,13 +439,15 @@ Made with ☕ and a little courage.
 
 </footer>
 
-</div>
 
+
+</div>
 <script>
 
 /* ============================= */
-/* Floating Emojis               */
+/* Floating Emojis (Optimized)   */
 /* ============================= */
+
 
 const emojis=[
 
@@ -351,7 +458,7 @@ const emojis=[
 "🍔",
 "🍟",
 "🌿",
-"🎮",
+🎮",
 "🎳",
 "🍰",
 "😄",
@@ -359,31 +466,38 @@ const emojis=[
 
 ];
 
-for(let i=0;i<45;i++){
 
-const e=document.createElement("div");
+for(let i=0;i<25;i++){
 
-e.className="float";
+    const e=document.createElement("div");
 
-e.innerHTML=
+    e.className="float";
 
-emojis[Math.floor(Math.random()*emojis.length)];
+    e.innerHTML=
+    emojis[Math.floor(Math.random()*emojis.length)];
 
-e.style.left=Math.random()*100+"vw";
 
-e.style.fontSize=
+    e.style.left=Math.random()*100+"vw";
 
-(18+Math.random()*22)+"px";
 
-e.style.animationDuration=
+    e.style.fontSize=
+    (18+Math.random()*22)+"px";
 
-(6+Math.random()*8)+"s";
 
-document.body.appendChild(e);
+    e.style.animationDuration=
+    (6+Math.random()*8)+"s";
+
+
+    document.body.appendChild(e);
 
 }
 
+
+
 /* ============================= */
+/* Get Elements                  */
+/* ============================= */
+
 
 const title=document.getElementById("title");
 
@@ -395,9 +509,16 @@ const yesBtn=document.getElementById("yesBtn");
 
 const noBtn=document.getElementById("noBtn");
 
+
+
+
+/* ============================= */
+/* Story Pages                   */
 /* ============================= */
 
+
 const pages=[
+
 
 {
 
@@ -407,6 +528,7 @@ text:"I wanted to tell you something..."
 
 },
 
+
 {
 
 title:"Remember our first hangout?",
@@ -414,6 +536,7 @@ title:"Remember our first hangout?",
 text:"I genuinely had a really good time."
 
 },
+
 
 {
 
@@ -423,6 +546,7 @@ text:"You made the day really enjoyable, and it honestly left me looking forward
 
 },
 
+
 {
 
 title:"So...",
@@ -431,35 +555,65 @@ text:"I thought instead of just thinking about it... why not ask?"
 
 }
 
+
 ];
 
+
+
 let page=0;
-/* ============================= */
-/* Story Animation               */
-/* ============================= */
+
+
+/* FIXED STORY VARIABLE */
+
+let story;
+
+
 
 function changePage(){
 
+
     if(page < pages.length){
 
+
         title.classList.remove("fade");
+
         text.classList.remove("fade");
 
         void title.offsetWidth;
 
+
         title.classList.add("fade");
+
         text.classList.add("fade");
 
-        title.innerHTML = pages[page].title;
-        text.innerHTML = pages[page].text;
+
+
+        title.innerHTML=
+        pages[page].title;
+
+
+
+        text.innerHTML=
+        pages[page].text;
+
+
 
         page++;
 
-    }else{
+
+    }
+
+    else{
+
 
         clearInterval(story);
 
-        title.innerHTML="One Last Question 😊";
+
+
+        title.innerHTML=
+        "One Last Question 😊";
+
+
 
         text.innerHTML=`
 
@@ -477,24 +631,39 @@ and hopefully lots of laughs.
 
 `;
 
+
+
         buttons.style.display="block";
+
 
         buttons.classList.add("fade");
 
+
     }
+
 
 }
 
+
+
 changePage();
 
-const story = setInterval(changePage,2800);
+
+story=setInterval(changePage,2800);
+
+
+
 
 /* ============================= */
 /* Funny No Button               */
 /* ============================= */
 
-let count = 0;
-let yesSize = 22;
+
+let count=0;
+
+let yesSize=22;
+
+
 
 const funnyMessages=[
 
@@ -520,175 +689,348 @@ const funnyMessages=[
 
 ];
 
+
+
 function moveButton(){
 
-    if(count >= 6){
+
+
+    if(count>=6){
+
 
         noBtn.style.position="relative";
+
         noBtn.style.left="0";
+
         noBtn.style.top="0";
+
+
         noBtn.innerHTML="Okay 😂";
+
 
         return;
 
+
     }
+
+
 
     noBtn.style.position="fixed";
 
-    const maxX =
-    window.innerWidth -
-    noBtn.offsetWidth -
-    20;
 
-    const maxY =
-    window.innerHeight -
-    noBtn.offsetHeight -
-    20;
 
-    noBtn.style.left =
-    Math.random()*maxX + "px";
+    const maxX=Math.max(
 
-    noBtn.style.top =
-    Math.random()*maxY + "px";
+        20,
 
-    noBtn.innerHTML =
-    funnyMessages[count];
-
-    count++;
-
-    yesSize += 5;
-
-    yesBtn.style.fontSize =
-    yesSize + "px";
-
-    yesBtn.style.padding =
-    (16 + count*2) + "px " +
-    (35 + count*3) + "px";
-
-    yesBtn.style.transform =
-    `scale(${1 + count*0.05})`;
-
-}
-
-/* Desktop */
-
-noBtn.addEventListener("mouseenter",moveButton);
-
-/* Mobile */
-
-noBtn.addEventListener("touchstart",(e)=>{
-
-    e.preventDefault();
-
-    moveButton();
-
-});
-
-/* If user actually clicks */
-
-noBtn.addEventListener("click",(e)=>{
-
-    e.preventDefault();
-
-    moveButton();
-
-});
-
-/* ============================= */
-/* Small Surprise ✨             */
-/* ============================= */
-
-yesBtn.addEventListener("mouseenter",()=>{
-
-    yesBtn.animate(
-
-        [
-
-            {transform:"scale(1)"},
-
-            {transform:"scale(1.08)"},
-
-            {transform:"scale(1)"}
-
-        ],
-
-        {
-
-            duration:500
-
-        }
+        window.innerWidth -
+        noBtn.offsetWidth -
+        40
 
     );
 
-});
+
+
+    const maxY=Math.max(
+
+        20,
+
+        window.innerHeight -
+        noBtn.offsetHeight -
+        40
+
+    );
+
+
+
+
+    noBtn.style.left=
+
+    Math.random()*maxX+"px";
+
+
+
+    noBtn.style.top=
+
+    Math.random()*maxY+"px";
+
+
+
+    noBtn.innerHTML=
+
+    funnyMessages[count];
+
+
+
+    count++;
+
+
+
+    yesSize+=5;
+
+
+
+    yesBtn.style.fontSize=
+
+    yesSize+"px";
+
+
+
+    yesBtn.style.padding=
+
+    (16+count*2)+"px "+
+    (35+count*3)+"px";
+
+
+
+    yesBtn.style.transform=
+
+    `scale(${1+count*.05})`;
+
+
+
+}
+
+
+
+/* Desktop + Mobile */
+
+noBtn.addEventListener(
+
+"mouseenter",
+
+moveButton
+
+);
+
+
+
+noBtn.addEventListener(
+
+"pointerover",
+
+moveButton
+
+);
+
+
+
+noBtn.addEventListener(
+
+"touchstart",
+
+(e)=>{
+
+    e.preventDefault();
+
+    moveButton();
+
+}
+
+);
+
+
+
+noBtn.addEventListener(
+
+"click",
+
+(e)=>{
+
+    e.preventDefault();
+
+    moveButton();
+
+}
+
+);
+
+
+
 
 /* ============================= */
-/* YES BUTTON - SUCCESS PAGE     */
+/* YES Button Animation          */
 /* ============================= */
 
-yesBtn.addEventListener("click",()=>{
 
-    /* Celebration */
+yesBtn.addEventListener(
 
-    for(let i=0;i<180;i++){
+"mouseenter",
 
-        let emoji=document.createElement("div");
+()=>{
 
-        emoji.innerHTML=
-        emojis[Math.floor(Math.random()*emojis.length)];
 
-        emoji.style.position="fixed";
-        emoji.style.left=Math.random()*100+"vw";
-        emoji.style.top="-40px";
-        emoji.style.fontSize=(20+Math.random()*25)+"px";
-        emoji.style.pointerEvents="none";
-        emoji.style.zIndex="9999";
+yesBtn.animate(
 
-        document.body.appendChild(emoji);
+[
 
-        emoji.animate(
+{
 
-        [
+transform:"scale(1)"
 
-            {
-                transform:"translateY(0px) rotate(0deg)",
-                opacity:1
-            },
+},
 
-            {
+{
 
-                transform:
-                `translateY(${window.innerHeight+200}px) rotate(720deg)`,
+transform:"scale(1.08)"
 
-                opacity:0
+},
 
-            }
+{
 
-        ],
+transform:"scale(1)"
+
+}
+
+],
+
+
+{
+
+duration:500
+
+}
+
+);
+
+
+}
+
+);
+
+
+
+
+
+/* ============================= */
+/* YES CLICK SUCCESS PAGE        */
+/* ============================= */
+
+
+yesBtn.addEventListener(
+
+"click",
+
+showSuccess
+
+);
+
+
+
+</script>
+<script>
+
+/* ============================= */
+/* SUCCESS PAGE FUNCTION         */
+/* ============================= */
+
+
+function showSuccess(){
+
+
+/* Celebration Emoji */
+
+for(let i=0;i<120;i++){
+
+
+    let emoji=document.createElement("div");
+
+
+    emoji.innerHTML=
+    emojis[Math.floor(Math.random()*emojis.length)];
+
+
+
+    emoji.style.position="fixed";
+
+    emoji.style.left=
+    Math.random()*100+"vw";
+
+
+    emoji.style.top="-40px";
+
+
+    emoji.style.fontSize=
+    (20+Math.random()*25)+"px";
+
+
+    emoji.style.pointerEvents="none";
+
+
+    emoji.style.zIndex="9999";
+
+
+
+    document.body.appendChild(emoji);
+
+
+
+    emoji.animate(
+
+    [
 
         {
 
-            duration:2500+Math.random()*1800
+            transform:
+            "translateY(0px) rotate(0deg)",
+
+            opacity:1
+
+        },
+
+
+        {
+
+            transform:
+
+            `translateY(${window.innerHeight+200}px) rotate(720deg)`,
+
+            opacity:0
 
         }
 
-        );
 
-        setTimeout(()=>{
+    ],
 
-            emoji.remove();
 
-        },4500);
+    {
+
+
+        duration:
+        2500+Math.random()*1500
+
 
     }
 
-    /* Wait before showing success page */
+
+    );
+
+
 
     setTimeout(()=>{
 
-        document.body.innerHTML=`
+        emoji.remove();
+
+    },4500);
+
+
+
+}
+
+
+
+
+
+/* Wait then show final page */
+
+
+setTimeout(()=>{
+
+
+document.body.innerHTML=`
 
 <style>
+
 
 body{
 
@@ -704,7 +1046,7 @@ display:flex;
 
 justify-content:center;
 
-align-items:center;
+align-items:flex-start;
 
 font-family:'Segoe UI',Arial,sans-serif;
 
@@ -712,127 +1054,269 @@ overflow-x:hidden;
 
 }
 
+
+
 .success{
+
 
 width:min(92%,760px);
 
+
+margin:40px auto;
+
+
 background:rgba(255,255,255,.65);
+
 
 backdrop-filter:blur(15px);
 
+
 border-radius:30px;
+
 
 padding:40px;
 
+
 text-align:center;
 
-box-shadow:0 15px 40px rgba(0,0,0,.15);
+
+box-shadow:
+
+0 15px 40px rgba(0,0,0,.15);
+
 
 animation:pop .8s ease;
 
+
 }
+
+
 
 @keyframes pop{
 
+
 from{
+
 
 opacity:0;
 
-transform:translateY(30px) scale(.9);
+
+transform:
+
+translateY(30px)
+
+scale(.9);
+
 
 }
+
+
 
 to{
 
+
 opacity:1;
 
-transform:translateY(0) scale(1);
+
+transform:
+
+translateY(0)
+
+scale(1);
+
 
 }
 
+
+
 }
+
+
 
 .choice{
 
+
 display:grid;
 
-grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+
+grid-template-columns:
+
+repeat(auto-fit,minmax(140px,1fr));
+
 
 gap:15px;
 
+
 margin-top:30px;
 
+
 }
+
+
 
 .choice button{
 
+
 padding:16px;
+
 
 font-size:18px;
 
+
 border:none;
+
 
 border-radius:18px;
 
+
 cursor:pointer;
+
 
 background:#2563eb;
 
+
 color:white;
+
 
 transition:.3s;
 
+
 }
+
+
 
 .choice button:hover{
 
-transform:translateY(-5px);
+
+transform:
+
+translateY(-5px);
+
 
 background:#1d4ed8;
 
+
 }
+
+
+
 
 #result{
 
+
 margin-top:35px;
+
 
 display:none;
 
+
 animation:pop .6s ease;
+
 
 }
 
+
+
+@media(max-width:600px){
+
+
+.success{
+
+
+padding:25px 20px;
+
+
+}
+
+
+
+.choice{
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+}
+
+
+
 </style>
+
+
+
 
 <div class="success">
 
-<h1 style="color:#1e3a8a;font-size:clamp(2rem,7vw,4rem);">
+
+<h1 style="
+
+color:#1e3a8a;
+
+font-size:clamp(2rem,7vw,4rem);
+
+">
 
 🎉 Yay!!
 
 </h1>
 
+
+
+
 <img
 
-src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif"
+src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif"
 
-style="width:280px;border-radius:22px;margin-top:20px;">
+style="width:280px;border-radius:22px;margin-top:20px;"
 
-<h2 style="margin-top:25px;color:#1e3a8a;">
+>
+
+
+
+
+<h2 style="
+
+margin-top:25px;
+
+color:#1e3a8a;
+
+">
 
 You said YES! ☕✨
 
 </h2>
 
-<p style="font-size:1.15rem;line-height:1.8;color:#555;">
+
+
+
+<p style="
+
+font-size:1.15rem;
+
+line-height:1.8;
+
+color:#555;
+
+">
 
 Now comes the difficult part...
+
+<br>
 
 Where should we go? 😄
 
 </p>
 
+
+
+
+
 <div class="choice">
+
 
 <button onclick="finish('☕ Coffee')">
 
@@ -840,11 +1324,15 @@ Where should we go? 😄
 
 </button>
 
+
+
 <button onclick="finish('🍜 Food')">
 
 🍜 Food
 
 </button>
+
+
 
 <button onclick="finish('🎳 Bowling')">
 
@@ -852,11 +1340,15 @@ Where should we go? 😄
 
 </button>
 
+
+
 <button onclick="finish('🎮 Arcade')">
 
 🎮 Arcade
 
 </button>
+
+
 
 <button onclick="finish('🌳 A Walk')">
 
@@ -864,15 +1356,23 @@ Where should we go? 😄
 
 </button>
 
+
+
 <button onclick="finish('🍰 Dessert')">
 
 🍰 Dessert
 
 </button>
 
+
 </div>
 
+
+
+
+
 <div id="result">
+
 
 <h2 style="color:#2563eb;">
 
@@ -880,23 +1380,37 @@ Excellent Choice! 😄
 
 </h2>
 
+
+
+
 <p style="line-height:1.9;color:#555;">
+
 
 Looks like our second hangout already has a plan.
 
+
 <br><br>
+
 
 Now all that's left...
 
 is finding a day we're both free.
 
+
 <br><br>
+
 
 I'm really looking forward to spending time with you again.
 
+
 😊🌿
 
+
 </p>
+
+
+
+
 
 <div style="
 
@@ -910,13 +1424,17 @@ border-radius:20px;
 
 ">
 
+
 <h3 style="color:#2563eb;">
 
 📜 Patch Notes v2.0
 
 </h3>
 
+
+
 <p style="line-height:2;color:#555;">
+
 
 ✅ Round Two Confirmed
 
@@ -936,31 +1454,61 @@ border-radius:20px;
 
 ✨ Looking forward to seeing you again
 
+
 </p>
 
-</div>
 
 </div>
 
+
+
 </div>
+
+
+</div>
+
+
+
+
 
 <script>
 
+
 function finish(place){
+
 
 document.querySelector(".choice").style.display="none";
 
+
 document.getElementById("result").style.display="block";
+
+
 
 document.querySelector("#result h2").innerHTML=
 
 place+" Selected! 🎉";
+
+
+}
+
+
+</script>
+
+
+`;
+
+
+
+},2500);
+
+
 
 }
 
 
 
 </script>
+
 
 </body>
 
