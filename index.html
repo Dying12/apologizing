@@ -21,6 +21,7 @@ html{
     scroll-behavior:smooth;
 }
 
+
 body{
 
     background:linear-gradient(135deg,#dbeafe,#ffffff);
@@ -34,7 +35,6 @@ body{
 
     justify-content:center;
 
-    /* FIXED SCROLL ISSUE */
     align-items:flex-start;
 
     padding:50px 20px;
@@ -44,9 +44,7 @@ body{
 }
 
 
-/* ============================= */
-/* Floating Background           */
-/* ============================= */
+/* Floating Emojis */
 
 .float{
 
@@ -92,9 +90,8 @@ body{
 }
 
 
-/* ============================= */
-/* Main Card                     */
-/* ============================= */
+
+/* Main Card */
 
 
 .container{
@@ -116,7 +113,6 @@ body{
     box-shadow:
     0 15px 40px rgba(0,0,0,.12);
 
-
     animation:pop .8s ease;
 
     z-index:5;
@@ -124,24 +120,25 @@ body{
 }
 
 
+
 @keyframes pop{
 
-    from{
+from{
 
-        transform:translateY(30px) scale(.95);
+    opacity:0;
 
-        opacity:0;
+    transform:translateY(30px) scale(.95);
 
-    }
+}
 
 
-    to{
+to{
 
-        transform:translateY(0) scale(1);
+    opacity:1;
 
-        opacity:1;
+    transform:translateY(0) scale(1);
 
-    }
+}
 
 }
 
@@ -149,7 +146,7 @@ body{
 
 .fade{
 
-    animation:fade .8s ease;
+animation:fade .8s ease;
 
 }
 
@@ -157,29 +154,28 @@ body{
 
 @keyframes fade{
 
-    from{
+from{
 
-        opacity:0;
+    opacity:0;
 
-        transform:translateY(20px);
-
-    }
-
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
+    transform:translateY(20px);
 
 }
 
 
-/* ============================= */
-/* Text                          */
-/* ============================= */
+to{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+}
+
+
+
+/* Text */
 
 
 h1{
@@ -221,9 +217,8 @@ p{
 }
 
 
-/* ============================= */
-/* Image                         */
-/* ============================= */
+
+/* Image */
 
 
 img{
@@ -244,9 +239,7 @@ img{
 
 
 
-/* ============================= */
-/* Buttons                       */
-/* ============================= */
+/* Buttons */
 
 
 button{
@@ -300,9 +293,8 @@ button{
 }
 
 
-/* ============================= */
-/* Footer                        */
-/* ============================= */
+
+/* Footer */
 
 
 footer{
@@ -317,54 +309,57 @@ footer{
 
 
 
-/* ============================= */
-/* Mobile Fix                    */
-/* ============================= */
+/* Mobile */
 
 
 @media(max-width:600px){
 
 
-    body{
+body{
 
-        padding:30px 15px;
+    padding:30px 15px;
 
-    }
-
-
-    .container{
-
-        padding:25px 20px;
-
-        margin:20px auto;
-
-    }
+}
 
 
-    button{
 
-        width:90%;
+.container{
 
-        font-size:20px;
+    padding:25px 20px;
 
-    }
+    margin:20px auto;
 
-
-    h2{
-
-        font-size:1.4rem;
-
-    }
+}
 
 
-    p{
 
-        font-size:1rem;
+button{
 
-    }
+    width:90%;
+
+    font-size:20px;
+
+}
+
+
+
+h2{
+
+    font-size:1.4rem;
+
+}
+
+
+
+p{
+
+    font-size:1rem;
+
+}
 
 
 }
+
 
 </style>
 
@@ -440,12 +435,11 @@ Made with ☕ and a little courage.
 </footer>
 
 
-
 </div>
 <script>
 
 /* ============================= */
-/* Floating Emojis (Optimized)   */
+/* Floating Emojis               */
 /* ============================= */
 
 
@@ -458,7 +452,7 @@ const emojis=[
 "🍔",
 "🍟",
 "🌿",
-🎮",
+"🎮",
 "🎳",
 "🍰",
 "😄",
@@ -467,24 +461,27 @@ const emojis=[
 ];
 
 
+
 for(let i=0;i<25;i++){
 
     const e=document.createElement("div");
 
     e.className="float";
 
-    e.innerHTML=
+
+    e.innerHTML =
     emojis[Math.floor(Math.random()*emojis.length)];
 
 
-    e.style.left=Math.random()*100+"vw";
+    e.style.left =
+    Math.random()*100+"vw";
 
 
-    e.style.fontSize=
+    e.style.fontSize =
     (18+Math.random()*22)+"px";
 
 
-    e.style.animationDuration=
+    e.style.animationDuration =
     (6+Math.random()*8)+"s";
 
 
@@ -495,7 +492,7 @@ for(let i=0;i<25;i++){
 
 
 /* ============================= */
-/* Get Elements                  */
+/* Elements                      */
 /* ============================= */
 
 
@@ -513,12 +510,11 @@ const noBtn=document.getElementById("noBtn");
 
 
 /* ============================= */
-/* Story Pages                   */
+/* Story                         */
 /* ============================= */
 
 
 const pages=[
-
 
 {
 
@@ -555,17 +551,13 @@ text:"I thought instead of just thinking about it... why not ask?"
 
 }
 
-
 ];
 
 
 
 let page=0;
 
-
-/* FIXED STORY VARIABLE */
-
-let story;
+let story=null;
 
 
 
@@ -579,6 +571,7 @@ function changePage(){
 
         text.classList.remove("fade");
 
+
         void title.offsetWidth;
 
 
@@ -588,12 +581,12 @@ function changePage(){
 
 
 
-        title.innerHTML=
+        title.innerHTML =
         pages[page].title;
 
 
 
-        text.innerHTML=
+        text.innerHTML =
         pages[page].text;
 
 
@@ -603,6 +596,7 @@ function changePage(){
 
     }
 
+
     else{
 
 
@@ -610,12 +604,12 @@ function changePage(){
 
 
 
-        title.innerHTML=
+        title.innerHTML =
         "One Last Question 😊";
 
 
 
-        text.innerHTML=`
+        text.innerHTML = `
 
 I really enjoyed spending time with you.
 
@@ -635,7 +629,6 @@ and hopefully lots of laughs.
 
         buttons.style.display="block";
 
-
         buttons.classList.add("fade");
 
 
@@ -650,6 +643,7 @@ changePage();
 
 
 story=setInterval(changePage,2800);
+
 
 
 
@@ -691,6 +685,8 @@ const funnyMessages=[
 
 
 
+
+
 function moveButton(){
 
 
@@ -704,14 +700,14 @@ function moveButton(){
 
         noBtn.style.top="0";
 
-
         noBtn.innerHTML="Okay 😂";
 
 
         return;
 
-
     }
+
+
 
 
 
@@ -744,19 +740,19 @@ function moveButton(){
 
 
 
-    noBtn.style.left=
+    noBtn.style.left =
 
     Math.random()*maxX+"px";
 
 
 
-    noBtn.style.top=
+    noBtn.style.top =
 
     Math.random()*maxY+"px";
 
 
 
-    noBtn.innerHTML=
+    noBtn.innerHTML =
 
     funnyMessages[count];
 
@@ -766,26 +762,21 @@ function moveButton(){
 
 
 
-    yesSize+=5;
+    yesSize +=5;
 
 
 
-    yesBtn.style.fontSize=
+    yesBtn.style.fontSize =
 
     yesSize+"px";
 
 
 
-    yesBtn.style.padding=
+    yesBtn.style.padding =
 
     (16+count*2)+"px "+
+
     (35+count*3)+"px";
-
-
-
-    yesBtn.style.transform=
-
-    `scale(${1+count*.05})`;
 
 
 
@@ -793,7 +784,9 @@ function moveButton(){
 
 
 
-/* Desktop + Mobile */
+
+
+/* Desktop */
 
 noBtn.addEventListener(
 
@@ -805,6 +798,8 @@ moveButton
 
 
 
+/* Modern browsers */
+
 noBtn.addEventListener(
 
 "pointerover",
@@ -814,6 +809,8 @@ moveButton
 );
 
 
+
+/* Mobile */
 
 noBtn.addEventListener(
 
@@ -848,8 +845,9 @@ noBtn.addEventListener(
 
 
 
+
 /* ============================= */
-/* YES Button Animation          */
+/* Yes Button Effect             */
 /* ============================= */
 
 
@@ -903,7 +901,7 @@ duration:500
 
 
 /* ============================= */
-/* YES CLICK SUCCESS PAGE        */
+/* YES CLICK                     */
 /* ============================= */
 
 
@@ -921,14 +919,14 @@ showSuccess
 <script>
 
 /* ============================= */
-/* SUCCESS PAGE FUNCTION         */
+/* SUCCESS PAGE                  */
 /* ============================= */
 
 
 function showSuccess(){
 
 
-/* Celebration Emoji */
+/* Celebration */
 
 for(let i=0;i<120;i++){
 
@@ -936,26 +934,25 @@ for(let i=0;i<120;i++){
     let emoji=document.createElement("div");
 
 
-    emoji.innerHTML=
+    emoji.innerHTML =
     emojis[Math.floor(Math.random()*emojis.length)];
 
 
 
     emoji.style.position="fixed";
 
-    emoji.style.left=
+    emoji.style.left =
     Math.random()*100+"vw";
 
 
     emoji.style.top="-40px";
 
 
-    emoji.style.fontSize=
+    emoji.style.fontSize =
     (20+Math.random()*25)+"px";
 
 
     emoji.style.pointerEvents="none";
-
 
     emoji.style.zIndex="9999";
 
@@ -982,7 +979,6 @@ for(let i=0;i<120;i++){
         {
 
             transform:
-
             `translateY(${window.innerHeight+200}px) rotate(720deg)`,
 
             opacity:0
@@ -992,13 +988,10 @@ for(let i=0;i<120;i++){
 
     ],
 
-
     {
-
 
         duration:
         2500+Math.random()*1500
-
 
     }
 
@@ -1021,13 +1014,11 @@ for(let i=0;i<120;i++){
 
 
 
-/* Wait then show final page */
-
-
 setTimeout(()=>{
 
 
-document.body.innerHTML=`
+document.body.innerHTML = `
+
 
 <style>
 
@@ -1053,6 +1044,7 @@ font-family:'Segoe UI',Arial,sans-serif;
 overflow-x:hidden;
 
 }
+
 
 
 
@@ -1092,6 +1084,7 @@ animation:pop .8s ease;
 
 
 
+
 @keyframes pop{
 
 
@@ -1111,7 +1104,6 @@ scale(.9);
 }
 
 
-
 to{
 
 
@@ -1128,8 +1120,8 @@ scale(1);
 }
 
 
-
 }
+
 
 
 
@@ -1151,6 +1143,7 @@ margin-top:30px;
 
 
 }
+
 
 
 
@@ -1185,18 +1178,18 @@ transition:.3s;
 
 
 
+
 .choice button:hover{
 
 
-transform:
-
-translateY(-5px);
+transform:translateY(-5px);
 
 
 background:#1d4ed8;
 
 
 }
+
 
 
 
@@ -1214,6 +1207,8 @@ animation:pop .6s ease;
 
 
 }
+
+
 
 
 
@@ -1239,7 +1234,6 @@ grid-template-columns:1fr;
 }
 
 
-
 }
 
 
@@ -1249,7 +1243,9 @@ grid-template-columns:1fr;
 
 
 
+
 <div class="success">
+
 
 
 <h1 style="
@@ -1267,6 +1263,7 @@ font-size:clamp(2rem,7vw,4rem);
 
 
 
+
 <img
 
 src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif"
@@ -1274,6 +1271,7 @@ src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif"
 style="width:280px;border-radius:22px;margin-top:20px;"
 
 >
+
 
 
 
@@ -1289,6 +1287,7 @@ color:#1e3a8a;
 You said YES! ☕✨
 
 </h2>
+
 
 
 
@@ -1325,13 +1324,11 @@ Where should we go? 😄
 </button>
 
 
-
 <button onclick="finish('🍜 Food')">
 
 🍜 Food
 
 </button>
-
 
 
 <button onclick="finish('🎳 Bowling')">
@@ -1341,7 +1338,6 @@ Where should we go? 😄
 </button>
 
 
-
 <button onclick="finish('🎮 Arcade')">
 
 🎮 Arcade
@@ -1349,13 +1345,11 @@ Where should we go? 😄
 </button>
 
 
-
 <button onclick="finish('🌳 A Walk')">
 
 🌳 Walk
 
 </button>
-
 
 
 <button onclick="finish('🍰 Dessert')">
@@ -1379,6 +1373,7 @@ Where should we go? 😄
 Excellent Choice! 😄
 
 </h2>
+
 
 
 
@@ -1407,6 +1402,7 @@ I'm really looking forward to spending time with you again.
 
 
 </p>
+
 
 
 
@@ -1465,34 +1461,9 @@ border-radius:20px;
 </div>
 
 
+
 </div>
 
-
-
-
-
-<script>
-
-
-function finish(place){
-
-
-document.querySelector(".choice").style.display="none";
-
-
-document.getElementById("result").style.display="block";
-
-
-
-document.querySelector("#result h2").innerHTML=
-
-place+" Selected! 🎉";
-
-
-}
-
-
-</script>
 
 
 `;
@@ -1504,6 +1475,28 @@ place+" Selected! 🎉";
 
 
 }
+
+
+
+
+/* FIXED finish function */
+
+window.finish=function(place){
+
+
+document.querySelector(".choice").style.display="none";
+
+
+document.getElementById("result").style.display="block";
+
+
+
+document.querySelector("#result h2").innerHTML =
+
+place+" Selected! 🎉";
+
+
+};
 
 
 
