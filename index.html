@@ -1,119 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Oops... Please Don't Block Me 😂</title>
+<title>A Tiny Invitation ☕</title>
 
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
 
-    background:linear-gradient(135deg,#dbeafe,#ffffff);
-    min-height:100vh;
-    overflow:hidden;
+background:linear-gradient(135deg,#dbeafe,#ffffff);
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+overflow:hidden;
 
-    text-align:center;
+height:100vh;
 
-}
+display:flex;
+justify-content:center;
+align-items:center;
 
-.container{
-
-    position:relative;
-    z-index:10;
-    padding:20px;
+position:relative;
 
 }
 
-h1{
-
-    color:#1e3a8a;
-    margin-bottom:20px;
-    font-size:clamp(2rem,8vw,3rem);
-
-}
-
-h2{
-
-    color:#1e3a8a;
-    margin-bottom:25px;
-    font-size:1.8rem;
-
-}
-
-p{
-
-    color:#555;
-    font-size:1.15rem;
-    line-height:1.7;
-    margin-bottom:20px;
-
-}
-
-img{
-
-    width:260px;
-    max-width:80vw;
-    border-radius:18px;
-    margin-bottom:20px;
-
-}
-
-button{
-
-    border:none;
-    border-radius:14px;
-    cursor:pointer;
-    transition:.3s;
-
-}
-
-#yesBtn{
-
-    background:#2563eb;
-    color:white;
-    padding:15px 35px;
-    font-size:22px;
-    margin-right:15px;
-
-}
-
-#yesBtn:hover{
-
-    background:#1d4ed8;
-
-}
-
-#noBtn{
-
-    background:#dddddd;
-    color:#333;
-    padding:15px 35px;
-    font-size:22px;
-    position:relative;
-
-}
+/* Floating emojis */
 
 .float{
 
-    position:absolute;
-    pointer-events:none;
-    user-select:none;
-    animation:float 8s linear infinite;
+position:absolute;
+pointer-events:none;
+animation:float linear infinite;
 
 }
 
@@ -121,13 +46,177 @@ button{
 
 from{
 
-transform:translateY(100vh);
+transform:translateY(110vh);
+
+opacity:1;
 
 }
 
 to{
 
 transform:translateY(-120px);
+
+opacity:.2;
+
+}
+
+}
+
+.container{
+
+width:min(92%,700px);
+
+background:rgba(255,255,255,.55);
+
+backdrop-filter:blur(16px);
+
+border-radius:30px;
+
+padding:35px;
+
+box-shadow:
+
+0 15px 45px rgba(0,0,0,.15);
+
+text-align:center;
+
+z-index:5;
+
+animation:pop .8s ease;
+
+}
+
+@keyframes pop{
+
+from{
+
+transform:scale(.8);
+
+opacity:0;
+
+}
+
+to{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+}
+
+h1{
+
+color:#1e3a8a;
+
+font-size:clamp(2rem,8vw,3.6rem);
+
+margin-bottom:20px;
+
+}
+
+h2{
+
+margin-top:25px;
+
+color:#1e3a8a;
+
+font-size:1.8rem;
+
+}
+
+p{
+
+font-size:1.15rem;
+
+line-height:1.8;
+
+color:#555;
+
+margin-top:20px;
+
+}
+
+img{
+
+width:280px;
+
+max-width:80vw;
+
+border-radius:25px;
+
+margin-top:20px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.2);
+
+}
+
+button{
+
+border:none;
+
+border-radius:16px;
+
+cursor:pointer;
+
+transition:.35s;
+
+font-size:22px;
+
+padding:16px 35px;
+
+margin:18px 10px;
+
+}
+
+#yesBtn{
+
+background:#2563eb;
+
+color:white;
+
+}
+
+#yesBtn:hover{
+
+background:#1d4ed8;
+
+transform:scale(1.05);
+
+}
+
+#noBtn{
+
+background:#ddd;
+
+color:#333;
+
+position:relative;
+
+}
+
+.fade{
+
+animation:fade .8s;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(25px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
 
 }
 
@@ -139,60 +228,59 @@ transform:translateY(-120px);
 
 <body>
 
-<div class="container">
+<div class="container fade" id="card">
 
-<h1>My Bad 😂</h1>
+<h1 id="title">
+
+Loading...
+
+</h1>
 
 <img
-src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif"
-alt="Funny Cat">
+id="gif"
+src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
 
-<p>
+<p id="text">
 
-I made a tiny mistake...
-
-<br><br>
-
-Okay... maybe not THAT tiny. 😅
-
-<br><br>
-
-No excuses.
-
-Just hoping you won't disappear after this.
+Preparing something...
 
 </p>
 
+<div id="buttons" style="display:none;">
+
 <h2>
 
-Can we still text each other? 🥹
+Want to hang out with me? ☕✨
 
 </h2>
 
 <button id="yesBtn">
 
-Alright 😌
+Sounds Fun 😄
 
 </button>
 
 <button id="noBtn">
 
-Nope 😂
+Maybe Later 🙈
 
 </button>
 
 </div>
 
+</div>
+
 <script>
 
+const title=document.getElementById("title");
+const text=document.getElementById("text");
+const buttons=document.getElementById("buttons");
+
 const emojis=[
-
-"😂","🤣","🥲","🤡","🍌","🐸","🐥","🐱","🦆","🍪",
-"🗿","💀","😎","🙃","🎉","🍕","🐢","🦖","🦭","🐔"
-
+"☕","✨","🌸","😊","🍔","🍟","🎳","🎮","🌿","🌤️","😄","🍰"
 ];
 
-for(let i=0;i<40;i++){
+for(let i=0;i<45;i++){
 
 let e=document.createElement("div");
 
@@ -204,111 +292,191 @@ Math.floor(Math.random()*emojis.length)
 
 e.style.left=Math.random()*100+"vw";
 
-e.style.fontSize=(18+Math.random()*20)+"px";
+e.style.fontSize=(18+Math.random()*22)+"px";
 
-e.style.animationDuration=
-(5+Math.random()*5)+"s";
+e.style.animationDuration=(6+Math.random()*8)+"s";
 
 document.body.appendChild(e);
 
 }
-const noBtn = document.getElementById("noBtn");
-const yesBtn = document.getElementById("yesBtn");
 
-let count = 0;
-let yesSize = 22;
+const pages=[
 
-const messages = [
+{
+title:"Hey 😊",
+text:"I wanted to tell you something..."
+},
 
-"NO 😂",
-"Are you sure? 🤨",
-"Think again 🤣",
-"404 Forgiveness Not Found 💀",
-"Mission Failed 🚫",
-"Go apologize harder 😂",
-"Still nope 🐸",
-"You missed! 🤡",
-"Catch me first 🏃",
-"Loading forgiveness... 1%",
-"Try again 🍌",
-"Access Denied 🚫",
-"Not today 😏",
-"Bruh 😂",
-"Okay... SIKE 🤣"
+{
+title:"Remember our first hangout?",
+text:"I genuinely had a really good time."
+},
+
+{
+title:"Since then...",
+text:"I've been looking forward to meeting you again."
+},
+
+{
+title:"So...",
+text:"I thought I'd ask you something."
+}
+
+];
+
+let page=0;
+function nextPage(){
+
+    if(page < pages.length){
+
+        title.classList.remove("fade");
+        text.classList.remove("fade");
+
+        void title.offsetWidth;
+
+        title.classList.add("fade");
+        text.classList.add("fade");
+
+        title.innerHTML = pages[page].title;
+        text.innerHTML = pages[page].text;
+
+        page++;
+
+    }else{
+
+        title.innerHTML="One Last Question 😊";
+
+        text.innerHTML=`
+
+I really enjoyed spending time with you.
+
+I'd love to make more memories together.
+
+No pressure.
+
+Just good food,
+
+good conversations,
+
+and hopefully lots of laughs.
+
+`;
+
+        buttons.style.display="block";
+
+        clearInterval(slideshow);
+
+    }
+
+}
+
+const slideshow=setInterval(nextPage,2500);
+
+const noBtn=document.getElementById("noBtn");
+const yesBtn=document.getElementById("yesBtn");
+
+let count=0;
+let yesSize=22;
+
+const messages=[
+
+"Thinking... 🤔",
+
+"Coffee? ☕",
+
+"Free fries 🍟",
+
+"It'll be fun 😄",
+
+"One more chance 🥹",
+
+"Pretty please? 🙈",
+
+"Still deciding? 😂",
+
+"Adventure awaits 🌸",
+
+"I promise no interviews 😂",
+
+"Okay okay... maybe? 😆"
 
 ];
 
 function moveButton(){
 
-    noBtn.style.position = "fixed";
+    if(count>=6){
 
-    const maxX =
-        window.innerWidth -
-        noBtn.offsetWidth -
-        20;
+        noBtn.innerHTML="Okay 😂";
 
-    const maxY =
-        window.innerHeight -
-        noBtn.offsetHeight -
-        20;
+        return;
 
-    noBtn.style.left =
-        Math.random() * maxX + "px";
+    }
 
-    noBtn.style.top =
-        Math.random() * maxY + "px";
+    noBtn.style.position="fixed";
 
-    noBtn.innerHTML =
-        messages[count % messages.length];
+    const maxX=
+    window.innerWidth-
+    noBtn.offsetWidth-20;
+
+    const maxY=
+    window.innerHeight-
+    noBtn.offsetHeight-20;
+
+    noBtn.style.left=
+    Math.random()*maxX+"px";
+
+    noBtn.style.top=
+    Math.random()*maxY+"px";
+
+    noBtn.innerHTML=
+    messages[count%messages.length];
 
     count++;
 
-    yesSize += 7;
+    yesSize+=5;
 
-    yesBtn.style.fontSize =
-        yesSize + "px";
+    yesBtn.style.fontSize=
+    yesSize+"px";
 
-    yesBtn.style.padding =
-        (15 + count * 2) +
-        "px " +
-        (35 + count * 3) +
-        "px";
+    yesBtn.style.padding=
+    (16+count*2)+"px "+
+    (35+count*3)+"px";
 
-    yesBtn.style.transform =
-        `scale(${1 + count * 0.05})`;
+    yesBtn.style.transform=
+    `scale(${1+count*.05})`;
 
 }
 
 noBtn.addEventListener(
-    "mouseover",
-    moveButton
+"mouseover",
+moveButton
 );
 
 noBtn.addEventListener(
-    "click",
-    function(e){
+"touchstart",
+function(e){
 
-        e.preventDefault();
+e.preventDefault();
 
-        moveButton();
+moveButton();
 
-    }
+}
 );
 
 noBtn.addEventListener(
-    "touchstart",
-    function(e){
+"click",
+function(e){
 
-        e.preventDefault();
+e.preventDefault();
 
-        moveButton();
+moveButton();
 
-    }
+}
 );
-
 yesBtn.addEventListener("click",()=>{
 
-    for(let i=0;i<120;i++){
+    // Celebration emoji rain
+    for(let i=0;i<150;i++){
 
         let emoji=document.createElement("div");
 
@@ -317,8 +485,8 @@ yesBtn.addEventListener("click",()=>{
 
         emoji.style.position="fixed";
         emoji.style.left=Math.random()*100+"vw";
-        emoji.style.top="-20px";
-        emoji.style.fontSize=(20+Math.random()*20)+"px";
+        emoji.style.top="-30px";
+        emoji.style.fontSize=(20+Math.random()*25)+"px";
         emoji.style.pointerEvents="none";
         emoji.style.zIndex="9999";
 
@@ -326,22 +494,21 @@ yesBtn.addEventListener("click",()=>{
 
         emoji.animate(
 
-            [
-                {
-                    transform:"translateY(0px) rotate(0deg)",
-                    opacity:1
-                },
-                {
-                    transform:
-                    `translateY(${window.innerHeight+120}px) rotate(720deg)`,
-                    opacity:0
-                }
-            ],
-
+        [
             {
-                duration:2500+Math.random()*2000,
-                iterations:1
+                transform:"translateY(0px) rotate(0deg)",
+                opacity:1
+            },
+            {
+                transform:`translateY(${window.innerHeight+150}px) rotate(720deg)`,
+                opacity:0
             }
+        ],
+
+        {
+            duration:2500+Math.random()*2000,
+            iterations:1
+        }
 
         );
 
@@ -350,19 +517,30 @@ yesBtn.addEventListener("click",()=>{
         },5000);
 
     }
-      setTimeout(()=>{
+
+    // Show success page
+    setTimeout(()=>{
 
         document.body.innerHTML=`
 
 <div style="
 display:flex;
-flex-direction:column;
 justify-content:center;
 align-items:center;
 height:100vh;
 background:linear-gradient(135deg,#dbeafe,#ffffff);
-padding:20px;
+padding:25px;
+">
+
+<div style="
+width:min(92%,750px);
+background:rgba(255,255,255,.6);
+backdrop-filter:blur(15px);
+border-radius:30px;
+padding:40px;
 text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,.15);
+animation:pop .8s ease;
 ">
 
 <h1 style="
@@ -371,7 +549,7 @@ font-size:clamp(2rem,8vw,4rem);
 margin-bottom:20px;
 ">
 
-🏆 Achievement Unlocked! 😂
+🎉 Round Two Unlocked!
 
 </h1>
 
@@ -379,68 +557,134 @@ margin-bottom:20px;
 src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif"
 style="
 width:300px;
-max-width:80vw;
-border-radius:20px;
+max-width:85vw;
+border-radius:25px;
+box-shadow:0 10px 25px rgba(0,0,0,.2);
 ">
 
 <h2 style="
+margin-top:25px;
 color:#1e3a8a;
-margin-top:20px;
 ">
 
-You Didn't Block Me! 🥳
+Yay!! 😄
 
 </h2>
 
 <p style="
 margin-top:20px;
 font-size:1.2rem;
-color:#555;
 line-height:1.8;
+color:#555;
 ">
 
-Thanks for giving me another chance!
+Now comes the hardest part...
 
 <br><br>
 
-I promise to think before I do something goofy...
+Where should we go? 🤔
 
 <br><br>
 
-...at least once a week. 🤣
+☕ Coffee?
+
+🍜 Food?
+
+🎳 Bowling?
+
+🎮 Arcade?
+
+🌳 A walk?
+
+🍰 Dessert?
+
+<br><br>
+
+Honestly...
+
+I don't mind where we end up.
+
+I'm just really looking forward to spending time with you again.
 
 </p>
 
-<p style="
-margin-top:25px;
-color:#666;
-font-size:1rem;
+<div style="
+margin-top:35px;
+background:#edf4ff;
+padding:25px;
+border-radius:20px;
 ">
 
-Patch Notes v1.0 🛠️
+<h2 style="color:#2563eb;">
+
+📜 Patch Notes v2.0
+
+</h2>
+
+<p style="
+font-size:1.05rem;
+line-height:2;
+color:#555;
+">
+
+✅ Friendship Level +1
 
 <br>
 
-✔ Increased brain usage by 5%
+☕ Hangout Quest Unlocked
 
 <br>
 
-✔ Reduced weirdness by 0.01%
+😂 Excitement increased by 100%
 
 <br>
 
-✔ Hopefully less annoying 😂
+🌸 New Memories Loading...
+
+<br>
+
+✨ Looking forward to Round Two
 
 </p>
 
 </div>
 
+<p style="
+margin-top:30px;
+font-size:1.1rem;
+line-height:1.9;
+color:#666;
+">
+
+P.S.
+
+<br><br>
+
+I really enjoyed the first time we met.
+
+That's why I wanted to ask you out again.
+
+Let's just enjoy the moment,
+
+have fun,
+
+and make another great memory together.
+
+😊🌿
+
+</p>
+
+</div>
+
+</div>
+
 `;
 
-    },1200);
+    },1400);
 
 });
-  </script>
+
+</script>
 
 </body>
 
