@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -13,76 +14,101 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
+font-family:'Segoe UI',Arial,sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
 }
 
 body{
 
 background:linear-gradient(135deg,#dbeafe,#ffffff);
 
-overflow:hidden;
+min-height:100vh;
 
-height:100vh;
+overflow-x:hidden;
+overflow-y:auto;
 
 display:flex;
 justify-content:center;
 align-items:center;
 
+padding:50px 20px;
+
 position:relative;
 
 }
 
-/* Floating emojis */
+/* ============================= */
+/* Floating Background           */
+/* ============================= */
 
 .float{
 
 position:absolute;
+
 pointer-events:none;
+
+user-select:none;
+
 animation:float linear infinite;
+
+opacity:.85;
 
 }
 
 @keyframes float{
 
-from{
+0%{
 
-transform:translateY(110vh);
+transform:translateY(110vh) rotate(0deg);
+
+opacity:0;
+
+}
+
+10%{
 
 opacity:1;
 
 }
 
-to{
+100%{
 
-transform:translateY(-120px);
+transform:translateY(-120px) rotate(360deg);
 
-opacity:.2;
+opacity:0;
+
+}
 
 }
 
-}
+/* ============================= */
 
 .container{
 
-width:min(92%,700px);
+width:min(92%,720px);
 
-background:rgba(255,255,255,.55);
+margin:40px auto;
+
+background:rgba(255,255,255,.62);
 
 backdrop-filter:blur(16px);
 
 border-radius:30px;
 
-padding:35px;
-
-box-shadow:
-
-0 15px 45px rgba(0,0,0,.15);
+padding:40px;
 
 text-align:center;
 
-z-index:5;
+box-shadow:
+
+0 15px 40px rgba(0,0,0,.12);
 
 animation:pop .8s ease;
+
+z-index:5;
 
 }
 
@@ -90,7 +116,7 @@ animation:pop .8s ease;
 
 from{
 
-transform:scale(.8);
+transform:translateY(30px) scale(.95);
 
 opacity:0;
 
@@ -98,7 +124,7 @@ opacity:0;
 
 to{
 
-transform:scale(1);
+transform:translateY(0) scale(1);
 
 opacity:1;
 
@@ -106,11 +132,41 @@ opacity:1;
 
 }
 
+.fade{
+
+animation:fade .8s ease;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+opacity:1;
+
+}
+
+}
+
+/* ============================= */
+
 h1{
 
-color:#1e3a8a;
+font-size:clamp(2rem,7vw,3.8rem);
 
-font-size:clamp(2rem,8vw,3.6rem);
+color:#1e3a8a;
 
 margin-bottom:20px;
 
@@ -118,11 +174,11 @@ margin-bottom:20px;
 
 h2{
 
-margin-top:25px;
-
-color:#1e3a8a;
+margin-top:30px;
 
 font-size:1.8rem;
+
+color:#1e3a8a;
 
 }
 
@@ -130,11 +186,13 @@ p{
 
 font-size:1.15rem;
 
-line-height:1.8;
+line-height:1.9;
 
 color:#555;
 
 margin-top:20px;
+
+white-space:pre-line;
 
 }
 
@@ -142,15 +200,19 @@ img{
 
 width:280px;
 
-max-width:80vw;
+max-width:85vw;
 
-border-radius:25px;
+border-radius:24px;
 
-margin-top:20px;
+margin-top:25px;
 
-box-shadow:0 10px 25px rgba(0,0,0,.2);
+box-shadow:
+
+0 10px 25px rgba(0,0,0,.18);
 
 }
+
+/* ============================= */
 
 button{
 
@@ -162,11 +224,11 @@ cursor:pointer;
 
 transition:.35s;
 
-font-size:22px;
-
 padding:16px 35px;
 
-margin:18px 10px;
+font-size:22px;
+
+margin:20px 10px;
 
 }
 
@@ -188,7 +250,7 @@ transform:scale(1.05);
 
 #noBtn{
 
-background:#ddd;
+background:#dddddd;
 
 color:#333;
 
@@ -196,29 +258,15 @@ position:relative;
 
 }
 
-.fade{
+/* ============================= */
 
-animation:fade .8s;
+footer{
 
-}
+margin-top:35px;
 
-@keyframes fade{
+font-size:.95rem;
 
-from{
-
-opacity:0;
-
-transform:translateY(25px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
+color:#777;
 
 }
 
@@ -228,7 +276,7 @@ transform:translateY(0);
 
 <body>
 
-<div class="container fade" id="card">
+<div class="container" id="card">
 
 <h1 id="title">
 
@@ -237,8 +285,14 @@ Loading...
 </h1>
 
 <img
+
 id="gif"
-src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
+
+src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif"
+
+alt="Cute Cat"
+
+>
 
 <p id="text">
 
@@ -246,7 +300,13 @@ Preparing something...
 
 </p>
 
-<div id="buttons" style="display:none;">
+<div
+
+id="buttons"
+
+style="display:none;"
+
+>
 
 <h2>
 
@@ -268,64 +328,117 @@ Maybe Later 🙈
 
 </div>
 
+<footer>
+
+Made with ☕ and a little courage.
+
+</footer>
+
 </div>
 
 <script>
 
-const title=document.getElementById("title");
-const text=document.getElementById("text");
-const buttons=document.getElementById("buttons");
+/* ============================= */
+/* Floating Emojis               */
+/* ============================= */
 
 const emojis=[
-"☕","✨","🌸","😊","🍔","🍟","🎳","🎮","🌿","🌤️","😄","🍰"
+
+"☕",
+"✨",
+"🌸",
+"😊",
+"🍔",
+"🍟",
+"🌿",
+"🎮",
+"🎳",
+"🍰",
+"😄",
+"🌤️"
+
 ];
 
 for(let i=0;i<45;i++){
 
-let e=document.createElement("div");
+const e=document.createElement("div");
 
 e.className="float";
 
-e.innerHTML=emojis[
-Math.floor(Math.random()*emojis.length)
-];
+e.innerHTML=
+
+emojis[Math.floor(Math.random()*emojis.length)];
 
 e.style.left=Math.random()*100+"vw";
 
-e.style.fontSize=(18+Math.random()*22)+"px";
+e.style.fontSize=
 
-e.style.animationDuration=(6+Math.random()*8)+"s";
+(18+Math.random()*22)+"px";
+
+e.style.animationDuration=
+
+(6+Math.random()*8)+"s";
 
 document.body.appendChild(e);
 
 }
 
+/* ============================= */
+
+const title=document.getElementById("title");
+
+const text=document.getElementById("text");
+
+const buttons=document.getElementById("buttons");
+
+const yesBtn=document.getElementById("yesBtn");
+
+const noBtn=document.getElementById("noBtn");
+
+/* ============================= */
+
 const pages=[
 
 {
+
 title:"Hey 😊",
+
 text:"I wanted to tell you something..."
+
 },
 
 {
+
 title:"Remember our first hangout?",
+
 text:"I genuinely had a really good time."
+
 },
 
 {
-title:"Since then...",
-text:"I've been looking forward to meeting you again."
+
+title:"I kept thinking about it.",
+
+text:"You made the day really enjoyable, and it honestly left me looking forward to meeting you again."
+
 },
 
 {
+
 title:"So...",
-text:"I thought I'd ask you something."
+
+text:"I thought instead of just thinking about it... why not ask?"
+
 }
 
 ];
 
 let page=0;
-function nextPage(){
+/* ============================= */
+/* Story Animation               */
+/* ============================= */
+
+function changePage(){
 
     if(page < pages.length){
 
@@ -344,68 +457,76 @@ function nextPage(){
 
     }else{
 
+        clearInterval(story);
+
         title.innerHTML="One Last Question 😊";
 
         text.innerHTML=`
 
 I really enjoyed spending time with you.
 
-I'd love to make more memories together.
+I'd love to make another memory together.
 
 No pressure.
 
+No expectations.
+
 Just good food,
-
 good conversations,
-
 and hopefully lots of laughs.
 
 `;
 
         buttons.style.display="block";
 
-        clearInterval(slideshow);
+        buttons.classList.add("fade");
 
     }
 
 }
 
-const slideshow=setInterval(nextPage,2500);
+changePage();
 
-const noBtn=document.getElementById("noBtn");
-const yesBtn=document.getElementById("yesBtn");
+const story = setInterval(changePage,2800);
 
-let count=0;
-let yesSize=22;
+/* ============================= */
+/* Funny No Button               */
+/* ============================= */
 
-const messages=[
+let count = 0;
+let yesSize = 22;
+
+const funnyMessages=[
 
 "Thinking... 🤔",
 
 "Coffee? ☕",
 
-"Free fries 🍟",
+"Free fries? 🍟",
+
+"Pretty please? 🥹",
 
 "It'll be fun 😄",
 
-"One more chance 🥹",
+"Adventure awaits 🌸",
 
-"Pretty please? 🙈",
+"I'll let you pick the place 😌",
 
 "Still deciding? 😂",
 
-"Adventure awaits 🌸",
+"Just one hangout 🙈",
 
-"I promise no interviews 😂",
-
-"Okay okay... maybe? 😆"
+"Okay okay 😂"
 
 ];
 
 function moveButton(){
 
-    if(count>=6){
+    if(count >= 6){
 
+        noBtn.style.position="relative";
+        noBtn.style.left="0";
+        noBtn.style.top="0";
         noBtn.innerHTML="Okay 😂";
 
         return;
@@ -414,69 +535,101 @@ function moveButton(){
 
     noBtn.style.position="fixed";
 
-    const maxX=
-    window.innerWidth-
-    noBtn.offsetWidth-20;
+    const maxX =
+    window.innerWidth -
+    noBtn.offsetWidth -
+    20;
 
-    const maxY=
-    window.innerHeight-
-    noBtn.offsetHeight-20;
+    const maxY =
+    window.innerHeight -
+    noBtn.offsetHeight -
+    20;
 
-    noBtn.style.left=
-    Math.random()*maxX+"px";
+    noBtn.style.left =
+    Math.random()*maxX + "px";
 
-    noBtn.style.top=
-    Math.random()*maxY+"px";
+    noBtn.style.top =
+    Math.random()*maxY + "px";
 
-    noBtn.innerHTML=
-    messages[count%messages.length];
+    noBtn.innerHTML =
+    funnyMessages[count];
 
     count++;
 
-    yesSize+=5;
+    yesSize += 5;
 
-    yesBtn.style.fontSize=
-    yesSize+"px";
+    yesBtn.style.fontSize =
+    yesSize + "px";
 
-    yesBtn.style.padding=
-    (16+count*2)+"px "+
-    (35+count*3)+"px";
+    yesBtn.style.padding =
+    (16 + count*2) + "px " +
+    (35 + count*3) + "px";
 
-    yesBtn.style.transform=
-    `scale(${1+count*.05})`;
-
-}
-
-noBtn.addEventListener(
-"mouseover",
-moveButton
-);
-
-noBtn.addEventListener(
-"touchstart",
-function(e){
-
-e.preventDefault();
-
-moveButton();
+    yesBtn.style.transform =
+    `scale(${1 + count*0.05})`;
 
 }
-);
 
-noBtn.addEventListener(
-"click",
-function(e){
+/* Desktop */
 
-e.preventDefault();
+noBtn.addEventListener("mouseenter",moveButton);
 
-moveButton();
+/* Mobile */
 
-}
-);
+noBtn.addEventListener("touchstart",(e)=>{
+
+    e.preventDefault();
+
+    moveButton();
+
+});
+
+/* If user actually clicks */
+
+noBtn.addEventListener("click",(e)=>{
+
+    e.preventDefault();
+
+    moveButton();
+
+});
+
+/* ============================= */
+/* Small Surprise ✨             */
+/* ============================= */
+
+yesBtn.addEventListener("mouseenter",()=>{
+
+    yesBtn.animate(
+
+        [
+
+            {transform:"scale(1)"},
+
+            {transform:"scale(1.08)"},
+
+            {transform:"scale(1)"}
+
+        ],
+
+        {
+
+            duration:500
+
+        }
+
+    );
+
+});
+/* ============================= */
+/* YES BUTTON - SUCCESS PAGE     */
+/* ============================= */
+
 yesBtn.addEventListener("click",()=>{
 
-    // Celebration emoji rain
-    for(let i=0;i<150;i++){
+    /* Celebration */
+
+    for(let i=0;i<180;i++){
 
         let emoji=document.createElement("div");
 
@@ -485,7 +638,7 @@ yesBtn.addEventListener("click",()=>{
 
         emoji.style.position="fixed";
         emoji.style.left=Math.random()*100+"vw";
-        emoji.style.top="-30px";
+        emoji.style.top="-40px";
         emoji.style.fontSize=(20+Math.random()*25)+"px";
         emoji.style.pointerEvents="none";
         emoji.style.zIndex="9999";
@@ -495,188 +648,316 @@ yesBtn.addEventListener("click",()=>{
         emoji.animate(
 
         [
+
             {
                 transform:"translateY(0px) rotate(0deg)",
                 opacity:1
             },
+
             {
-                transform:`translateY(${window.innerHeight+150}px) rotate(720deg)`,
+
+                transform:
+                `translateY(${window.innerHeight+200}px) rotate(720deg)`,
+
                 opacity:0
+
             }
+
         ],
 
         {
-            duration:2500+Math.random()*2000,
-            iterations:1
+
+            duration:2500+Math.random()*1800
+
         }
 
         );
 
         setTimeout(()=>{
+
             emoji.remove();
-        },5000);
+
+        },4500);
 
     }
 
-    // Show success page
+    /* Wait before showing success page */
+
     setTimeout(()=>{
 
         document.body.innerHTML=`
 
-<div style="
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
+<style>
+
+body{
+
 background:linear-gradient(135deg,#dbeafe,#ffffff);
-padding:25px;
-">
 
-<div style="
-width:min(92%,750px);
-background:rgba(255,255,255,.6);
+min-height:100vh;
+
+margin:0;
+
+padding:40px 20px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-family:'Segoe UI',Arial,sans-serif;
+
+overflow-x:hidden;
+
+}
+
+.success{
+
+width:min(92%,760px);
+
+background:rgba(255,255,255,.65);
+
 backdrop-filter:blur(15px);
+
 border-radius:30px;
+
 padding:40px;
+
 text-align:center;
+
 box-shadow:0 15px 40px rgba(0,0,0,.15);
+
 animation:pop .8s ease;
-">
 
-<h1 style="
-color:#1e3a8a;
-font-size:clamp(2rem,8vw,4rem);
-margin-bottom:20px;
-">
+}
 
-🎉 Round Two Unlocked!
+@keyframes pop{
+
+from{
+
+opacity:0;
+
+transform:translateY(30px) scale(.9);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0) scale(1);
+
+}
+
+}
+
+.choice{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+
+gap:15px;
+
+margin-top:30px;
+
+}
+
+.choice button{
+
+padding:16px;
+
+font-size:18px;
+
+border:none;
+
+border-radius:18px;
+
+cursor:pointer;
+
+background:#2563eb;
+
+color:white;
+
+transition:.3s;
+
+}
+
+.choice button:hover{
+
+transform:translateY(-5px);
+
+background:#1d4ed8;
+
+}
+
+#result{
+
+margin-top:35px;
+
+display:none;
+
+animation:pop .6s ease;
+
+}
+
+</style>
+
+<div class="success">
+
+<h1 style="color:#1e3a8a;font-size:clamp(2rem,7vw,4rem);">
+
+🎉 Yay!!
 
 </h1>
 
 <img
+
 src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif"
-style="
-width:300px;
-max-width:85vw;
-border-radius:25px;
-box-shadow:0 10px 25px rgba(0,0,0,.2);
-">
 
-<h2 style="
-margin-top:25px;
-color:#1e3a8a;
-">
+style="width:280px;border-radius:22px;margin-top:20px;">
 
-Yay!! 😄
+<h2 style="margin-top:25px;color:#1e3a8a;">
+
+You said YES! ☕✨
 
 </h2>
 
-<p style="
-margin-top:20px;
-font-size:1.2rem;
-line-height:1.8;
-color:#555;
-">
+<p style="font-size:1.15rem;line-height:1.8;color:#555;">
 
-Now comes the hardest part...
+Now comes the difficult part...
 
-<br><br>
-
-Where should we go? 🤔
-
-<br><br>
-
-☕ Coffee?
-
-🍜 Food?
-
-🎳 Bowling?
-
-🎮 Arcade?
-
-🌳 A walk?
-
-🍰 Dessert?
-
-<br><br>
-
-Honestly...
-
-I don't mind where we end up.
-
-I'm just really looking forward to spending time with you again.
+Where should we go? 😄
 
 </p>
 
-<div style="
-margin-top:35px;
-background:#edf4ff;
-padding:25px;
-border-radius:20px;
-">
+<div class="choice">
 
-<h2 style="color:#2563eb;">
+<button onclick="finish('☕ Coffee')">
 
-📜 Patch Notes v2.0
+☕ Coffee
 
-</h2>
+</button>
 
-<p style="
-font-size:1.05rem;
-line-height:2;
-color:#555;
-">
+<button onclick="finish('🍜 Food')">
 
-✅ Friendship Level +1
+🍜 Food
 
-<br>
+</button>
 
-☕ Hangout Quest Unlocked
+<button onclick="finish('🎳 Bowling')">
 
-<br>
+🎳 Bowling
 
-😂 Excitement increased by 100%
+</button>
 
-<br>
+<button onclick="finish('🎮 Arcade')">
 
-🌸 New Memories Loading...
+🎮 Arcade
 
-<br>
+</button>
 
-✨ Looking forward to Round Two
+<button onclick="finish('🌳 A Walk')">
 
-</p>
+🌳 Walk
+
+</button>
+
+<button onclick="finish('🍰 Dessert')">
+
+🍰 Dessert
+
+</button>
 
 </div>
 
-<p style="
-margin-top:30px;
-font-size:1.1rem;
-line-height:1.9;
-color:#666;
-">
+<div id="result">
 
-P.S.
+<h2 style="color:#2563eb;">
+
+Excellent Choice! 😄
+
+</h2>
+
+<p style="line-height:1.9;color:#555;">
+
+Looks like our second hangout already has a plan.
 
 <br><br>
 
-I really enjoyed the first time we met.
+Now all that's left...
 
-That's why I wanted to ask you out again.
+is finding a day we're both free.
 
-Let's just enjoy the moment,
+<br><br>
 
-have fun,
-
-and make another great memory together.
+I'm really looking forward to spending time with you again.
 
 😊🌿
 
 </p>
 
+<div style="
+
+margin-top:25px;
+
+background:#edf4ff;
+
+padding:22px;
+
+border-radius:20px;
+
+">
+
+<h3 style="color:#2563eb;">
+
+📜 Patch Notes v2.0
+
+</h3>
+
+<p style="line-height:2;color:#555;">
+
+✅ Round Two Confirmed
+
+<br>
+
+☕ Hangout Accepted
+
+<br>
+
+🌸 Memory #2 Loading...
+
+<br>
+
+😂 Excitement +100%
+
+<br>
+
+✨ Looking forward to seeing you again
+
+</p>
+
 </div>
 
 </div>
+
+</div>
+
+<script>
+
+function finish(place){
+
+document.querySelector(".choice").style.display="none";
+
+document.getElementById("result").style.display="block";
+
+document.querySelector("#result h2").innerHTML=
+
+place+" Selected! 🎉";
+
+}
+
+</script>
 
 `;
 
